@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase";
 import { setUser } from "./redux/reducers/userSlice";
+import Character from "./features/character/Character";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,9 +42,16 @@ function App() {
                 element={activeUser ? <Home /> : <Navigate to="/register" />}
                 path="/"
               />
+
               <Route
                 element={activeUser ? <Navigate to="/" /> : <Authentication />}
                 path="register"
+              />
+              <Route
+                element={
+                  activeUser ? <Character /> : <Navigate to="/register" />
+                }
+                path="/character/:id"
               />
             </Routes>
           </HashRouter>

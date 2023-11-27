@@ -4,6 +4,7 @@ import useLoading from "../../common/hooks/useLoading";
 import CharacterCard from "./components/CharacterCard";
 import useCharacters from "./hooks/useCharacters";
 import Header from "../../common/components/Header";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { LoadingComponent, loadingState, setLoadingState } = useLoading();
@@ -15,11 +16,13 @@ const Home = () => {
     setErrorState
   );
 
+  const navigate = useNavigate();
+
   return (
     <>
       <Header />
-      <Container maxWidth="xl" sx={{ padding: 8 }}>
-        <Stack spacing={1}>
+      <Container maxWidth="lg" sx={{ marginTop: 10 }}>
+        <Stack spacing={2}>
           <Typography variant="h2" fontWeight="medium">
             Rick and Morty Characters
           </Typography>
@@ -34,8 +37,9 @@ const Home = () => {
                   key={character.id}
                   xs={12}
                   md={3}
-                  lg={2}
+                  // lg={2}
                   sx={{ cursor: "default" }}
+                  onClick={() => navigate(`/character/${character.id}`)}
                 >
                   <CharacterCard character={character} />
                 </Grid>

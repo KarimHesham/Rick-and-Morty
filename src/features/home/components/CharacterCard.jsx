@@ -15,7 +15,12 @@ const CharacterCard = ({ character }) => {
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            gutterBottom
+            variant="h5"
+            fontWeight="bold"
+            component="div"
+          >
             {character.name}
           </Typography>
           {/* <Typography variant="body2" color="text.secondary">
