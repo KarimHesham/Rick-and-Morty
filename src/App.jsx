@@ -14,6 +14,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase";
 import { setUser } from "./redux/reducers/userSlice";
 import Character from "./features/character/Character";
+import User from "./models/User";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        dispatch(setUser({ ...user, id: user.uid }));
+        dispatch(setUser(new User(user)));
       } else {
         dispatch(setUser(null));
       }
