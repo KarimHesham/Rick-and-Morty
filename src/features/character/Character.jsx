@@ -5,6 +5,7 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
+  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -32,7 +33,7 @@ const Character = () => {
 
       <Container
         maxWidth="lg"
-        sx={{ padding: 8, alignItems: "center", justifyContent: "center" }}
+        sx={{ marginTop: 10, alignItems: "center", justifyContent: "center" }}
       >
         <Stack spacing={2}>
           <Stack
@@ -51,42 +52,51 @@ const Character = () => {
           </Stack>
 
           <Stack spacing={1} alignItems="center" justifyContent="center">
-            <List
+            <Paper
               sx={{
                 width: "100%",
                 maxWidth: 360,
-                bgcolor: "background.paper",
+                bgcolor: "background.paper2",
                 borderRadius: 8,
+                boxShadow: "1px",
               }}
             >
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <GiHealthNormal />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary="Status" secondary={character?.status} />
-              </ListItem>
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <PiGenderMaleBold />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary="Gender" secondary={character?.gender} />
-              </ListItem>
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <MdCategory />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary="Species"
-                  secondary={character?.species}
-                />
-              </ListItem>
-            </List>
+              <List>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <GiHealthNormal />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Status"
+                    secondary={character?.status}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <PiGenderMaleBold />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Gender"
+                    secondary={character?.gender}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <MdCategory />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Species"
+                    secondary={character?.species}
+                  />
+                </ListItem>
+              </List>
+            </Paper>
           </Stack>
         </Stack>
       </Container>
