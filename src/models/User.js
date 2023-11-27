@@ -12,7 +12,7 @@ class User {
     this.id = user.uid || user.id || this.id;
     this.email = user.email || this.email;
     this.full_name = user.full_name || this.full_name;
-    this.username = user.username || this.username;
+    this.username = user.username || user.email.split("@")[0] || this.username;
     this.photo_url = user.photo_url || this.photo_url;
     this.created_at = user.created_at || new Date().getTime();
     this.updated_at = new Date().getTime();
