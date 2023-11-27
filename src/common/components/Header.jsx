@@ -111,7 +111,7 @@ const Header = () => {
                 onClick={openHomePage}
                 sx={{ display: { xs: "none", md: "flex" } }}
               >
-                <img src={Logo} alt="logo" height={35} width={65} />
+                <img src={Logo} alt="logo" height={65} width={65} />
               </Link>
             </Stack>
             <Stack direction="row" alignItems="center" spacing={0.5}>

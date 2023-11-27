@@ -29,7 +29,12 @@ const Home = () => {
 
           <Typography variant="h4">{characters?.info.count} Results</Typography>
 
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={{ xs: 1, md: 2 }}
+            alignItems="center"
+            justifyContent="center"
+          >
             {characters?.results.length > 0 &&
               characters.results.map((character) => (
                 <Grid
@@ -54,6 +59,9 @@ const Home = () => {
               onChange={(e, pageNumber) => {
                 e.preventDefault();
                 setPageNumber(pageNumber);
+              }}
+              sx={{
+                marginBottom: 4,
               }}
             />
           </Stack>
