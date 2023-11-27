@@ -46,6 +46,9 @@ class AuthenticationService {
     const res = await signInWithPopup(auth, googleProvider);
 
     this.setUser(res.user);
+
+    await this.sendVerificationLink(auth.currentUser);
+
     return res;
   };
 
@@ -75,6 +78,7 @@ class AuthenticationService {
   };
 
   sendVerificationLink = async (user) => {
+    console.log("HERE", user);
     const res = await sendEmailVerification(user);
 
     return res;
