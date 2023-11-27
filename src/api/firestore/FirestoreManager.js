@@ -71,16 +71,9 @@ class FirestoreManager {
     return { docRef, docSnapshot };
   };
 
-  // TODO: move to new implementation to avoid making get call before update
   updateDocument = async (doc, payload) => {
-    // ===> Old implementation
     const res = await updateDoc(doc, payload);
     return res;
-
-    // ===> New Implementation
-    // const docRef = doc(db, this.collectionName, id);
-    // const res = await updateDoc(docRef, payload);
-    // return res;
   };
 
   deleteDocument = async (key) => {
