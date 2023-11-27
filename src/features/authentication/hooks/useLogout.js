@@ -14,7 +14,7 @@ const useLogout = () => {
 
       await AuthService.signOut();
 
-      navigate("/");
+      navigate("/auth");
     } catch (err) {}
   };
 

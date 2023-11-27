@@ -39,18 +39,16 @@ function App() {
           <HashRouter>
             <Routes>
               <Route
-                element={activeUser ? <Home /> : <Navigate to="/register" />}
+                element={activeUser ? <Home /> : <Navigate to="/auth" />}
                 path="/"
               />
 
               <Route
                 element={activeUser ? <Navigate to="/" /> : <Authentication />}
-                path="register"
+                path="/auth"
               />
               <Route
-                element={
-                  activeUser ? <Character /> : <Navigate to="/register" />
-                }
+                element={activeUser ? <Character /> : <Navigate to="/auth" />}
                 path="/character/:id"
               />
             </Routes>
