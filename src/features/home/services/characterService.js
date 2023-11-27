@@ -3,7 +3,7 @@ import axios from "axios";
 export const getCharacters = async (pageNumber) => {
   try {
     const characters = await axios.get(
-      `https://rickandmortyapi.com/api/character?page=${pageNumber}`
+      `${import.meta.env.VITE_APP_BASE_URL}/character?page=${pageNumber}`
     );
 
     return characters.data;
