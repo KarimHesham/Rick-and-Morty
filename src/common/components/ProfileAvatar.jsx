@@ -7,7 +7,7 @@ const ProfileAvatar = ({ width, height }) => {
   return (
     <Avatar
       alt={activeUser.username && activeUser.username[0].toUpperCase()}
-      src={activeUser.photo_url && activeUser.photo_url}
+      src={activeUser.photo_url || activeUser.username[0].toUpperCase()}
       sx={{
         width: width,
         height: height,
