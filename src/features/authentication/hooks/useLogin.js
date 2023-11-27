@@ -11,7 +11,7 @@ import { setUser } from "../../../redux/reducers/userSlice";
 
 import User from "../../../models/User";
 
-const useLogin = ({ setLoadingState, setErrorState }) => {
+const useLogin = (setLoadingState, setErrorState) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const useLogin = ({ setLoadingState, setErrorState }) => {
           dispatch(setUser(newUser));
         }
 
-        navigate("/workspace");
+        navigate("/");
       }
     } catch (err) {
       switch (err.code) {

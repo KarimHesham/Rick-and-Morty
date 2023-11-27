@@ -25,7 +25,7 @@ const LoginForm = ({
   const [showPassword, handleClickShowPassword, handleMouseDownPassword] =
     useTogglePassword();
 
-  const login = useLogin({ setLoadingState, setErrorState });
+  const login = useLogin(setLoadingState, setErrorState);
 
   const initialValues = {
     email: "",
