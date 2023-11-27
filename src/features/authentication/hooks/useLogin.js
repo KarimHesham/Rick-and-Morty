@@ -9,7 +9,7 @@ import {
 } from "../../../common/services/user/userService";
 import { setUser } from "../../../redux/reducers/userSlice";
 
-import User from "../../../models/user/User";
+import User from "../../../models/User";
 
 const useLogin = ({ setLoadingState, setErrorState }) => {
   const dispatch = useDispatch();

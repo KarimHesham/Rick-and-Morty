@@ -12,11 +12,11 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-import { registerValidationSchema } from "../../utils/validation";
-import useTogglePassword from "../../hooks/useTogglePassword";
-import useRegister from "../../hooks/useRegister";
+import { loginValidationSchema } from "../utils/validation";
+import useLogin from "../hooks/useLogin";
+import useTogglePassword from "../hooks/useTogglePassword";
 
-const RegisterForm = ({
+const LoginForm = ({
   setFormAction,
   loadingState,
   setLoadingState,
@@ -25,28 +25,31 @@ const RegisterForm = ({
   const [showPassword, handleClickShowPassword, handleMouseDownPassword] =
     useTogglePassword();
 
-  const register = useRegister(setLoadingState, setErrorState);
-
-  const navigateToLogin = () => {
-    setFormAction("login");
-  };
+  const login = useLogin({ setLoadingState, setErrorState });
 
   const initialValues = {
     email: "",
     password: "",
-    confirmPassword: "",
+  };
+
+  const navigateToRegister = () => {
+    setFormAction("register");
+  };
+
+  const navigateToResetPassword = () => {
+    setFormAction("reset");
   };
 
   const { values, errors, touched, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
-    validationSchema: registerValidationSchema,
+    validationSchema: loginValidationSchema,
     onSubmit: async (values, actions) => {
       const payload = {
         email: values.email,
         password: values.password,
       };
 
-      await register(payload);
+      await login("local", payload);
 
       actions.resetForm();
     },
@@ -59,9 +62,7 @@ const RegisterForm = ({
     if (values.password === "") {
       touched.password = false;
     }
-    if (values.confirmPassword === "") {
-      touched.confirmPassword = false;
-    }
+
     // eslint-disable-next-line
   }, []);
 
@@ -78,14 +79,14 @@ const RegisterForm = ({
           label="Email"
           type="email"
           name="email"
+          required
           value={values.email}
           onChange={handleChange}
           variant="outlined"
           fullWidth
-          required
-          autoComplete="on"
           error={errors.email && touched.email}
           helperText={touched.email && errors.email}
+          autoComplete="on"
         />
 
         <TextField
@@ -115,33 +116,6 @@ const RegisterForm = ({
           }}
         />
 
-        <TextField
-          label="Confirm Password"
-          type={showPassword ? "text" : "password"}
-          name="confirmPassword"
-          value={values.confirmPassword}
-          onChange={handleChange}
-          variant="outlined"
-          fullWidth
-          required
-          error={errors.confirmPassword && touched.confirmPassword}
-          helperText={touched.confirmPassword && errors.confirmPassword}
-          autoComplete="on"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
-                  {showPassword ? <MdVisibility /> : <MdVisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-
         <Button
           type="submit"
           sx={{ fontSize: 20 }}
@@ -152,33 +126,37 @@ const RegisterForm = ({
           {loadingState.isOpen ? (
             <CircularProgress sx={{ color: "white" }} />
           ) : (
-            "Register"
+            "Login"
           )}
         </Button>
-      </Stack>
-
-      <Divider sx={{ width: "100%", mt: 2, mb: 2 }} />
-
-      <Stack
-        direction="column"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Typography component="p" variant="subtitle1" align="center">
-          Already have an account?
-        </Typography>
 
         <Link
           component="button"
           variant="subtitle1"
           underline="hover"
-          onClick={navigateToLogin}
+          onClick={navigateToResetPassword}
         >
-          Login
+          Forgot password?
         </Link>
       </Stack>
+
+      <Divider sx={{ width: "100%", mt: 2, mb: 2 }} />
+
+      <Typography component="p" variant="subtitle1" align="center">
+        {"Don't have an account?"}
+      </Typography>
+
+      <Button
+        sx={{ fontSize: 20 }}
+        size="large"
+        variant="contained"
+        fullWidth
+        onClick={navigateToRegister}
+      >
+        Register
+      </Button>
     </React.Fragment>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

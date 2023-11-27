@@ -8,7 +8,7 @@ import {
 } from "../../../common/services/user/userService";
 import { setUser } from "../../../redux/reducers/userSlice";
 import AuthService from "../../../lib/auth/AuthService";
-import User from "../../../models/user/User";
+import User from "../../../models/User";
 
 const useRegister = (setLoadingState, setErrorState) => {
   const dispatch = useDispatch();

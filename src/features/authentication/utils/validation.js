@@ -1,5 +1,4 @@
 import * as yup from "yup";
-import { app as locale } from "arab-locale";
 
 export const loginValidationSchema = yup.object().shape({
   email: yup

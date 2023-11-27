@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Loading } from "../../components/ui";
+import Loading from "../components/Loading";
 
 const useLoading = () => {
   const [loadingState, setLoadingState] = useState({

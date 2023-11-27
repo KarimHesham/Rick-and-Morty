@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Error } from "../../components/ui";
+import Error from "../components/Error";
 
 const useError = () => {
   const [errorState, setErrorState] = useState({ isOpen: false, message: "" });

@@ -8,9 +8,9 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import React, { useMemo } from "react";
-import ResetPasswordConfirmModal from "../../../authentication/components/ResetPasswordConfirmModal/ResetPasswordConfirmModal";
-import { forgetPasswordValidationSchema } from "../../../authentication/utils/validation";
-import useResetPassword from "../../../authentication/hooks/useResetPassword";
+import ResetPasswordConfirmModal from "../components/ResetPasswordConfirmModal";
+import { forgetPasswordValidationSchema } from "../utils/validation";
+import useResetPassword from "../hooks/useResetPassword";
 
 const ForgetPasswordForm = ({
   setFormAction,
