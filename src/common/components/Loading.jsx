@@ -1,5 +1,6 @@
 import { Backdrop, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
+import Logo from "../../assets/logo.webp";
 
 const Loading = ({ open, message, full }) => {
   return (
@@ -12,7 +13,13 @@ const Loading = ({ open, message, full }) => {
     >
       {full ? (
         <Stack>
-          <img src={""} className="loader-img" alt="loader" />
+          <img
+            src={Logo}
+            className="loader-img"
+            alt="loader"
+            height={60}
+            width={60}
+          />
         </Stack>
       ) : (
         <Stack
@@ -26,7 +33,13 @@ const Loading = ({ open, message, full }) => {
           borderRadius={2}
           sx={{ zIndex: (theme) => theme.zIndex.drawer + 2 }}
         >
-          <img src={""} className="loader-img-small" alt="loader" />
+          <img
+            src={Logo}
+            className="loader-img-small"
+            alt="loader"
+            height={60}
+            width={60}
+          />
           <Typography>{message}</Typography>
         </Stack>
       )}
